@@ -15,27 +15,28 @@ const RUNNABLE_EXAMPLE = {
   sections: [
     {
       name: 'Addition',
-      content: 'You probably know this!',
-      question: '5 + 5',
-      answer: '10',
+      content: (
+        <>
+          Let's start by writing some basic addition:{' '}
+          <code className={`madlib--inline`}>5 + 5</code>
+        </>
+      ),
+      answer: '5 + 5',
     },
     {
       name: 'Subtraction',
       content: 'You probably know this!',
-      question: '10 - 100',
-      answer: '-90',
+      answer: '10 - 100',
     },
     {
       name: 'Multiplication',
       content: 'You probably know this!',
-      question: '42 * 10',
-      answer: '420',
+      answer: '42 * 10',
     },
     {
       name: 'Division',
       content: 'You probably know this!',
-      question: '9 / 6',
-      answer: '1.5',
+      answer: '9 / 3',
     },
   ],
 }

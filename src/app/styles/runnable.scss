@@ -1,13 +1,18 @@
 @import "colors";
 
 .Example {
-  padding: 1rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  
+  code.madlib--inline {
+    border: 1px solid rgba(255,255,255,0.4);
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+  }
   &__nav {
     display: flex;
     flex-direction: row;
@@ -33,8 +38,15 @@
         }
       }
     }
+   &:active {
+    &:not(.Example__nav-button--inactive) {
+    .Example__icon {
+      fill: $color-yellow;
+    }
+    }
+  }
     &--inactive {
-      cursor: default;
+      cursor: not-allowed;
       .Example__icon {
          fill: $color-mg;
       }
@@ -45,7 +57,7 @@
     &--prev {
       margin-right: 0.5rem;
     }
-  }
+  } 
   
   &__nav-item {
     top: 50%;
@@ -61,5 +73,114 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  &__intro,
+  &__section-content {
+    padding: 1rem;
+  }
+  &__section-prompt {
+    width: calc(100% - 1rem);
+    background: black;
+    border: 1px solid $color-mg;
+    border-radius: 0.5rem;
+    padding: 0;
+    font-size: 1rem;
+    position: relative;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &--incorrect {
+      border: 1px solid $color-red;
+    }
+    
+  }
+  &__section-prompt:focus-within {
+    &:not(.Example__section-prompt--incorrect) {
+      border: 1px solid $color-mint;
+&::before {
+      color: $color-green;
+    }
+      .Example__section-button--run {
+        border-left-color: $color-mint;
+      }
+      .Example__section-button--run.Example__section-button--inactive {
+        color: $color-mg;
+        cursor: not-allowed;
+      }
+      .Example__section-button--run.Example__section-button--active {
+        cursor: pointer;
+        &:hover {
+          border-left-color: $color-pink;
+        }
+      }
+    }
+    &.Example__section-prompt--incorrect {
+      border: 1px solid $color-red;
+      &::before {
+        color: $color-pink;
+      }
+    }
+    
+
+  }
+  &__section-prompt::before {
+    transition: color 0.15s ease-out, border 0.3s ease-out;
+    // content: "▸";
+    content: "↳";
+    color: $color-mg;
+    font-size: 1rem;
+    width: 1.5rem;
+    display: inline;
+    height: 2.5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    top: 0;
+    cursor: text;
+  }
+  &__section-input {
+    font-family: "Fira Code", monospace;
+    border: 0;
+    background: transparent;
+    width: calc(100% - 7.5rem);
+    margin-left: 1.5rem;
+    height: 2.25rem;
+    // outline: 1px solid lime;
+    outline: 0;
+    color: $color-fg;
+  }
+  &__section-button {
+    transition: color 0.6s ease-out,
+      border 0.6s ease-out, background 0.6s ease-out;
+    font-family: "Fira Code", monospace;
+    font-weight: bold;
+    width: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    // color: $color-pink;
+    color: transparent;
+    border: 0;
+    border-left: 1px solid transparent;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    height: 2.5rem;
+    cursor: text;
+    &--active {
+      color: $color-pink;
+    }
+    &--active:hover {
+      cursor: pointer;
+      background-color: $color-pink;
+      color: $color-bg;
+      border-left-color: $color-pink;
+    }
   }
 }
